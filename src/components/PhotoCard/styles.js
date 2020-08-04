@@ -28,13 +28,3 @@ export const Img = styled.img`
     ${fadeIn()}
   }
 `
-
-export const Button = styled.button`
-  display:flex;
-  align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  & svg {
-    margin-right: 4px;
-  }
-`
