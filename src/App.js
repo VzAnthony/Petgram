@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext, useReducer } from 'react'
 import { Router } from '@reach/router'
+import { Context } from './Context'
 import { GlobalStyle } from './GlobalStyle'
 import { NavBar } from './components/NavBar'
 import { Logo } from './components/Logo'
@@ -10,11 +11,28 @@ import { Favs } from './pages/Favs'
 import { User } from './pages/User'
 import { NotRegisteredUser } from './pages/NotRegisteredUser'
 
-const UserLogged = ({ children }) => {
-  return children({ isAuth: false })
-}
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case ACTIONS.LOGIN:
+//       return { ...state, isAuth: action.payload }
+//     case ACTIONS.LOGOUT:
+//       return { ...state, isAuth: action.payload }
+//     default:
+//       return state
+//   }
+// }
+
+// const ACTIONS = {
+//   LOGIN: 'login',
+//   LOGOUT: 'logout'
+// }
 
 const App = () => {
+  const { isAuth } = useContext(Context)
+  // const [state, dispatch] = useReducer(reducer, {
+  //   isAuth: false
+  // })
+  // const { isAuth } = state
   return (
     <>
       <GlobalStyle />
@@ -23,22 +41,19 @@ const App = () => {
         <Home path='/' />
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
-      </Router>
-
-      <UserLogged>
         {
-          ({ isAuth }) =>
-            isAuth
-              ? <Router>
-                <Favs path='/favs' />
-                <User path='/user' />
-              </Router>
-              : <Router>
-                <NotRegisteredUser path='/favs' />
-                <NotRegisteredUser path='/user' />
-              </Router>
+          isAuth
+            ? <>
+              <Favs path='/favs' />
+              <User path='/user' />
+            </>
+            : <>
+              <NotRegisteredUser path='/favs' />
+              <NotRegisteredUser path='/user' />
+            </>
+
         }
-      </UserLogged>
+      </Router>
       <NavBar />
     </>
   )
