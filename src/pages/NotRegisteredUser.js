@@ -1,14 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from '../Context'
+import { UserForm } from '../components/UserForm/index'
 
 export const NotRegisteredUser = () => {
   const { activateAuth } = useContext(Context)
+  const [toggle, setToggle] = useState(true)
   return (
-    <form onSubmit={activateAuth}>
-      <button>Iniciar Sesion</button>
-    </form>
+    <>
+      {
+        toggle
+          ? <UserForm title='Iniciar Sesion' onSubmit={activateAuth} setToggle={setToggle} toggle={toggle} />
+          : <UserForm title='Registrarse' onSubmit={activateAuth} setToggle={setToggle} toggle={toggle} />
+      }
+    </>
   )
 }
-
-
-// TERMINAMOS VIENDO COMO ACTUALIZAR ESTE ESTADO CON UNA useState VER QUE NO SE PUEDE USAR FUERA DE UN COPONENTE FUNCIONAL Y QUE EL FUNCIONAMIENTO DEL USESTATE ES PARECIDO AL USEREDUCER
