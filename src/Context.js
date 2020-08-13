@@ -3,10 +3,15 @@ import React, { createContext, useState } from 'react'
 export const Context = createContext()
 
 export const Provider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(() => {
+    return window.sessionStorage.getItem('token')
+  })
   const initialState = {
     isAuth,
-    activateAuth: () => setIsAuth(true)
+    activateAuth: (token) => {
+      setIsAuth(true)
+      window.sessionStorage.setItem('token', token)
+    }
   }
   return (
     <Context.Provider value={initialState}>
