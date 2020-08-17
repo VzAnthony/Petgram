@@ -3,7 +3,6 @@ import { useInputValue } from '../../hooks/useInputValue'
 import { Form, Input, Button, Title, ChangeForm, MdPets, Error } from './styles'
 import Nprogress from '../../widgets/Nprogress'
 
-
 export const UserForm = ({ onSubmit, title, setToggle, toggle, error, disabled }) => {
   const email = useInputValue('')
   const password = useInputValue('')

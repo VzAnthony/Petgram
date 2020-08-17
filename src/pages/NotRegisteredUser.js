@@ -15,8 +15,8 @@ export const NotRegisteredUser = () => {
     const input = { email, password }
     const variables = { input }
     register({ variables }).then(({ data }) => {
-      const { singup } = data
-      activateAuth(singup)
+      const { signup } = data
+      activateAuth(signup)
     })
   }
   const onSubmitLogin = ({ email, password }) => {
