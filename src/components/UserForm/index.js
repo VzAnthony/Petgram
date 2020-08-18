@@ -1,6 +1,7 @@
 import React from 'react'
 import { useInputValue } from '../../hooks/useInputValue'
-import { Form, Input, Button, Title, ChangeForm, MdPets, Error } from './styles'
+import { Form, Input, Title, ChangeForm, MdPets, Error } from './styles'
+import { SubmitButton } from '../../components/SubmitButton'
 import Nprogress from '../../widgets/Nprogress'
 
 export const UserForm = ({ onSubmit, title, setToggle, toggle, error, disabled }) => {
@@ -25,7 +26,7 @@ export const UserForm = ({ onSubmit, title, setToggle, toggle, error, disabled }
         <Title>{title}</Title>
         <Input disabled={disabled} placeholder='Email' {...email} type='email' />
         <Input disabled={disabled} placeholder='Password' {...password} type='password' />
-        <Button disabled={disabled}>{title}</Button>
+        <SubmitButton disabled={disabled}>{title}</SubmitButton>
         {
           toggle
             ? <ChangeForm>No tienes cuenta? <b onClick={() => setToggle(false)}>Registrar</b></ChangeForm>
