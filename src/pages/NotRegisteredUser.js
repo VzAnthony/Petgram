@@ -5,7 +5,7 @@ import { useRegisterMutation } from '../hooks/useRegisterMutation'
 import { useLoginMutation } from '../hooks/useLoginMutation'
 import { Layout } from '../components/Layout'
 
-export const NotRegisteredUser = () => {
+const NotRegisteredUser = () => {
   const { activateAuth } = useContext(Context)
   const [toggle, setToggle] = useState(true)
   const [register, loadingRegisterMutation, errorRegisterMutation] = useRegisterMutation()
@@ -56,3 +56,5 @@ export const NotRegisteredUser = () => {
     </>
   )
 }
+
+export default NotRegisteredUser
