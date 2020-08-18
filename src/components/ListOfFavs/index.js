@@ -4,7 +4,6 @@ import Nprogress from '../../widgets/Nprogress'
 
 export const ListOfFavs = ({ favs = [], loading }) => {
   if (loading) {
-    console.log(loading)
     Nprogress.start()
   }
   if (!loading) {

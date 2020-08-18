@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Router } from '@reach/router'
+import { Router, Redirect } from '@reach/router'
 import { Context } from './Context'
 import { GlobalStyle } from './GlobalStyle'
 import { NavBar } from './components/NavBar'
@@ -10,6 +10,7 @@ import { Detail } from './pages/Detail'
 import { Favs } from './pages/Favs'
 import { User } from './pages/User'
 import { NotRegisteredUser } from './pages/NotRegisteredUser'
+import { NotFound } from './pages/NotFound'
 
 const App = () => {
   const { isAuth } = useContext(Context)
@@ -18,21 +19,16 @@ const App = () => {
       <GlobalStyle />
       <Logo />
       <Router>
+        <NotFound default />
         <Home path='/' />
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
-        {
-          isAuth
-            ? <>
-              <Favs path='/favs' />
-              <User path='/user' />
-            </>
-            : <>
-              <NotRegisteredUser path='/favs' />
-              <NotRegisteredUser path='/user' />
-            </>
-
-        }
+        {!isAuth && <NotRegisteredUser path='/login' />}
+        {!isAuth && <Redirect noThrow from='/favs' to='/login' />}
+        {!isAuth && <Redirect noThrow from='/user' to='/login' />}
+        {isAuth && <Redirect noThrow from='/login' to='/' />}
+        <Favs path='/favs' />
+        <User path='/user' />
       </Router>
       <NavBar />
     </>
