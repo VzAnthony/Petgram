@@ -3,6 +3,7 @@ import { Context } from '../Context'
 import { UserForm } from '../components/UserForm/index'
 import { useRegisterMutation } from '../hooks/useRegisterMutation'
 import { useLoginMutation } from '../hooks/useLoginMutation'
+import { Layout } from '../components/Layout'
 
 export const NotRegisteredUser = () => {
   const { activateAuth } = useContext(Context)
@@ -31,22 +32,26 @@ export const NotRegisteredUser = () => {
     <>
       {
         toggle
-          ? <UserForm
-            disabled={loadingLoginMutation}
-            error={errorMsgLogin}
-            title='Iniciar Sesion'
-            onSubmit={onSubmitLogin}
-            setToggle={setToggle}
-            toggle={toggle}
-          />
-          : <UserForm
-            disabled={loadingRegisterMutation}
-            error={errorMsgRegister}
-            title='Registrarse'
-            onSubmit={onSubmitRegister}
-            setToggle={setToggle}
-            toggle={toggle}
-          />
+          ? <Layout title='Login' subtitle='Seccion de login' hidde='true'>
+            <UserForm
+              disabled={loadingLoginMutation}
+              error={errorMsgLogin}
+              title='Iniciar Sesion'
+              onSubmit={onSubmitLogin}
+              setToggle={setToggle}
+              toggle={toggle}
+            />
+          </Layout> 
+          : <Layout title='Registro' subtitle='Seccion de Registro' hidde='true'>
+            <UserForm
+              disabled={loadingRegisterMutation}
+              error={errorMsgRegister}
+              title='Registrarse'
+              onSubmit={onSubmitRegister}
+              setToggle={setToggle}
+              toggle={toggle}
+            />
+          </Layout>
       }
     </>
   )
