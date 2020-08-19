@@ -2,6 +2,7 @@ import React from 'react'
 import { PhotoCard } from '../PhotoCard'
 import { useGetPhotos } from '../../hooks/useGetPhotos'
 import Nprogress from '../../widgets/Nprogress'
+import PropTypes from 'prop-types'
 
 export const ListOfPhotoCards = ({ categoryId }) => {
   const [loading, error, photos] = useGetPhotos(categoryId)
@@ -16,4 +17,8 @@ export const ListOfPhotoCards = ({ categoryId }) => {
       </ul>
     )
   }
+}
+
+ListOfPhotoCards.propTypes = {
+  categoryId: PropTypes.string
 }

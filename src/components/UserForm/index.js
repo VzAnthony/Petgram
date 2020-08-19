@@ -3,6 +3,7 @@ import { useInputValue } from '../../hooks/useInputValue'
 import { Form, Input, Title, ChangeForm, MdPets, Error } from './styles'
 import { SubmitButton } from '../../components/SubmitButton'
 import Nprogress from '../../widgets/Nprogress'
+import PropTypes from 'prop-types'
 
 export const UserForm = ({ onSubmit, title, setToggle, toggle, error, disabled }) => {
   const email = useInputValue('')
@@ -36,4 +37,13 @@ export const UserForm = ({ onSubmit, title, setToggle, toggle, error, disabled }
       {error && <Error>{error}</Error>}
     </>
   )
+}
+
+UserForm.propTypes = {
+  onSubmit: PropTypes.func,
+  title: PropTypes.string,
+  setToggle: PropTypes.func,
+  toggle: PropTypes.bool,
+  error: PropTypes.string,
+  disabled: PropTypes.bool
 }

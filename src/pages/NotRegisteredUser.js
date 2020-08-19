@@ -32,7 +32,7 @@ const NotRegisteredUser = () => {
     <>
       {
         toggle
-          ? <Layout title='Login' subtitle='Seccion de login' hidde='true'>
+          ? <Layout title='Login' subtitle='Seccion de login' hidde>
             <UserForm
               disabled={loadingLoginMutation}
               error={errorMsgLogin}
@@ -42,7 +42,7 @@ const NotRegisteredUser = () => {
               toggle={toggle}
             />
           </Layout> 
-          : <Layout title='Registro' subtitle='Seccion de Registro' hidde='true'>
+          : <Layout title='Registro' subtitle='Seccion de Registro' hidde>
             <UserForm
               disabled={loadingRegisterMutation}
               error={errorMsgRegister}
